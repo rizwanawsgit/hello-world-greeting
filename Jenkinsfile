@@ -11,7 +11,7 @@ node('Built-In Node') {
     bat 'mvn clean verify sonar:sonar 
     -Dsonar.projectName=1-sonar-project 
     -Dsonar.projectKey=1-sonar-project 
-    -Dsonar.projectVersion=$BUILD_NUMBER';
+    -Dsonar.projectVersion=$BUILD_NUMBER'
   }
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
