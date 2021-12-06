@@ -3,18 +3,18 @@ node('master') {
     checkout scm
   }
   stage('Build & Unit test'){
-    sh 'mvn clean verify -DskipITs=true';
+    bat 'mvn clean verify -DskipITs=true';
     junit '**/target/surefire-reports/TEST-*.xml'
     archive 'target/*.jar'
   }
   stage('Static Code Analysis'){
-    sh 'mvn clean verify sonar:sonar 
+    bat 'mvn clean verify sonar:sonar 
     -Dsonar.projectName=1-sonar-project 
     -Dsonar.projectKey=1-sonar-project 
     -Dsonar.projectVersion=$BUILD_NUMBER';
   }
   stage ('Integration Test'){
-    sh 'mvn clean verify -Dsurefire.skip=true';
+    bat 'mvn clean verify -Dsurefire.skip=true';
     junit '**/target/failsafe-reports/TEST-*.xml'
     archive 'target/*.jar'
   }
