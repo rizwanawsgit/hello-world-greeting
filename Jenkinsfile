@@ -9,8 +9,8 @@ node('master') {
   }
   stage('Static Code Analysis'){
     sh 'mvn clean verify sonar:sonar 
-    -Dsonar.projectName=example-project 
-    -Dsonar.projectKey=example-project 
+    -Dsonar.projectName=1-sonar-project 
+    -Dsonar.projectKey=1-sonar-project 
     -Dsonar.projectVersion=$BUILD_NUMBER';
   }
   stage ('Integration Test'){
