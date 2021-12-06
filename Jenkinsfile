@@ -8,10 +8,7 @@ node('Built-In Node') {
     archive 'target/*.jar'
   }
   stage('Static Code Analysis'){
-    bat 'mvn clean verify sonar:sonar 
-    -Dsonar.projectName=1-sonar-project 
-    -Dsonar.projectKey=1-sonar-project 
-    -Dsonar.projectVersion=$BUILD_NUMBER'
+    bat 'mvn clean verify sonar:sonar -Dsonar.projectName=1-sonar-project -Dsonar.projectKey=1-sonar-project -Dsonar.projectVersion=$BUILD_NUMBER'
   }
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
