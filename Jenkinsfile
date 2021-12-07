@@ -4,7 +4,7 @@ node {
   }
   stage('Build & Unit test'){
     bat 'mvn clean verify -DskipITs=true';
-    junit '**\target\surefire-reports\TEST-*.xml'
+    junit 'C:**\target\surefire-reports\TEST-*.xml'
     archiveArtifacts 'target\*.jar'
   }
   stage('Static Code Analysis'){
