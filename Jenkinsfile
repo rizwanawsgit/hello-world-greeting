@@ -12,8 +12,8 @@ node {
   }
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
-    junit '**\target\failsafe-reports\TEST-*.xml'
-    archiveArtifacts 'target\*.jar'
+    junit '**/target/failsafe-reports/TEST-*.xml'
+    archiveArtifacts 'target/*.jar'
   }
   stage ('Publish'){
     def server = Artifactory.server 'Default Artifactory Server'
