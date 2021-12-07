@@ -4,8 +4,8 @@ node {
   }
   stage('Build & Unit test'){
     bat 'mvn clean verify -DskipITs=true';
-    junit 'C:**\target\surefire-reports\TEST-*.xml'
-    archiveArtifacts 'target\*.jar'
+    junit 'C:**/target/surefire-reports/TEST-*.xml'
+    archiveArtifacts 'target/*.jar'
   }
   stage('Static Code Analysis'){
     bat 'mvn clean verify sonar:sonar -Dsonar.projectName=1-sonar-project -Dsonar.projectKey=1-sonar-project -Dsonar.projectVersion=$BUILD_NUMBER'
