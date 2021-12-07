@@ -12,7 +12,7 @@ node {
   }
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
-    junit '**/target/failsafe-reports/TEST-*.xml'
+    junit 'C:**/target/failsafe-reports/TEST-*.xml'
     archiveArtifacts 'target/*.jar'
   }
   stage ('Publish'){
