@@ -4,16 +4,16 @@ node {
   }
   stage('Build & Unit test'){
     bat 'mvn clean verify -DskipITs=true';
-    junit 'C:\\**\target\\surefire-reports\\TEST-*.xml'
-    archiveArtifacts 'target\\*.jar'
+    junit 'C:\jenkinshomedirectory\workspace\tibranch_pipeline_demo-ci_master\target\surefire-reports\TEST-*.xml'
+    archiveArtifacts 'target\*.jar'
   }
   stage('Static Code Analysis'){
     bat 'mvn clean verify sonar:sonar -Dsonar.projectName=1-sonar-project -Dsonar.projectKey=1-sonar-project -Dsonar.projectVersion=$BUILD_NUMBER'
   }
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
-    junit 'C:\\**\target\\failsafe-reports\\TEST-*.xml'
-    archiveArtifacts 'target\\*.jar'
+    junit 'C:\jenkinshomedirectory\workspace\tibranch_pipeline_demo-ci_master\target\surefire-reports\TEST-*.xml'
+    archiveArtifacts 'target\*.jar'
   }
   stage ('Publish'){
     def server = Artifactory.server 'Default Artifactory Server'
