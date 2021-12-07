@@ -13,7 +13,7 @@ node {
   stage ('Integration Test'){
     bat 'mvn clean verify -Dsurefire.skip=true';
     junit 'C:\\jenkinshomedirectory\\workspace\\tibranch_pipeline_demo-ci_master\\target\\surefire-reports\\TEST-*.xml'
-    archiveArtifacts 'target\*.jar'
+    archiveArtifacts 'target\\*.jar'
   }
   stage ('Publish'){
     def server = Artifactory.server 'Default Artifactory Server'
